@@ -58,16 +58,16 @@ var getWeather = function() {
     .then(function(data){
       console.log(data);
 
-      var uvIndex = document.createElement('p');
-      uvIndex.textContent = 'UV Index: ' + data.current.uvi;
-      mainWeather.appendChild(uvIndex);
+      var uvIndex = document.createElement('span');
+      // uvIndex.textContent = 'UV Index: ' + data.current.uvi;
+      // mainWeather.appendChild(uvIndex);
       if (data.current.uvi < 2) {
         uvIndex.setAttribute("class", "w-1/3 bg-green-100 text-green-800 text-md font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900");
       }
-      // console.log(data.current.uvi);
-      // uvIndex.innerHTML = data.current.uvi;
-      // currentUvEl.innerHTML = "UV Index: ";
-      // currentUvEl.append(uvIndex);
+      console.log(data.current.uvi);
+      uvIndex.innerHTML = data.current.uvi;
+      currentUvEl.innerHTML = "UV Index: ";
+      currentUvEl.append(uvIndex);
       if (data.current.uvi > 2 && data.current.uvi < 5) {
         uvIndex.setAttribute("class", "w-1/3 bg-yellow-100 text-yellow-800 text-md font-semibold mt-1.5 mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900");
       }
