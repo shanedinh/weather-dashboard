@@ -6,7 +6,7 @@ var currentUvEl = document.getElementById('uv-text')
 var forecastEl = document.getElementById('forecast');
 var historyEl = document.getElementById('history');
 var searchedListEl = document.getElementById('searchedCities');
-var searchHistory = JSON.parse(localStorage.getItem('search')) || [];
+
 
 
 
@@ -33,7 +33,7 @@ var getWeather = function() {
   .then(function(data) {
     console.log(data);
 
-    var date = moment().format('L');
+    var date = moment().format('LLLL');
     var displayDate = document.createElement('h2');
     displayDate.textContent = data.name + " | " + date;
     mainWeather.appendChild(displayDate);
@@ -91,7 +91,7 @@ var getWeather = function() {
       // loop and create 5 day forecast cards
       for (var i = 0; i < data.daily.length - 3; i++) {
         var card = document.createElement('div')
-        card.setAttribute("class", "bg-blue-600 text-white border border-black p-5 rounded-sm m-1")
+        card.setAttribute("class", "bg-blue-600 text-white border border-black p-5 rounded shadow-xl m-1")
 
 
         var forecastDate5 = document.createElement('h3');
@@ -125,13 +125,14 @@ var getWeather = function() {
 
       function showSearchHistory() {
       // save cities to localStorage
+      var searchHistory = JSON.parse(localStorage.getItem('search')) || [];
         historyEl = [];
         for (i = 0; i < searchHistory.length; i++) {
-          localStorage.setItem('search', JSON.stringify(cityName))
           var savedCity = document.createElement('button')
           savedCity.textContent = cityName;
-          savedCity.setAttribute("class", "w-full m-2 ml-6 bg-slate-400 rounded text-white text-center px-3 py-1 justify-center")
-          historyEl.push(savedCity)
+          savedCity.setAttribute("class", "w-full m-2 ml-6 bg-slate-400 hover:bg-slate-600 shadow-xl rounded text-white text-center px-3 py-1 justify-center")
+          historyEl.push(savedCity);
+          localStorage.setItem('search', JSON.stringify(cityName))
           searchedListEl.appendChild(savedCity);
           savedCity.addEventListener("click", function(){
             getWeather(savedCity.value);
