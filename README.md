@@ -5,7 +5,7 @@ A weather dashboard where you can search by city. Shows the weather for the curr
 
 ## Issues / Bugs
 * City history doesn't show under search button on live website but shows when testing out of VS Code.
-* Had issues with getting main weather card to update when a new location was searched.
+* Had issues with getting main weather card to update to show only new location when a new city was searched.
 * Had issues with getting local storage to persist when page was refreshed, as well as getting new location to save to local storage after first one. 
 
 ## Screenshot
